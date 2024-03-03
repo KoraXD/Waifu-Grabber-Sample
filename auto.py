@@ -1,3 +1,5 @@
+#Devs: @IkariS0_0 @KoraXD
+
 from .. import app
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -8,11 +10,15 @@ CHEAT_BOT = @username
 WAIFU_BOT_ID = 123456789
 GROUP_ID = -123456789
 
+#Devs: @IkariS0_0 @KoraXD
+
 def character_name(message):
     if "Copy string:" in message.text:
         return message.text.split("Copy string: ")[1].split("\n")[0]
     else:
         return None
+
+#Devs: @IkariS0_0 @KoraXD
 
 @app.on_message(filters.user(BOT_ID) & filters.photo)
 async def guess_photo(_, message):
@@ -21,6 +27,8 @@ async def guess_photo(_, message):
             await app.forward_messages(CHEAT_BOT, message.chat.id, message.id)
         except Exception as e:
             await message.reply_text(f"ERROR - {e}")
+
+#Devs: @IkariS0_0 @KoraXD
 
 @app.on_message(filters.private & filters.user(CHEAT_BOT_ID) & filters.text & filters.incoming)
 async def guess_text(_, message):
